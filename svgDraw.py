@@ -29,9 +29,11 @@ class SVGDrawApp(GameApp):
                 for i in xrange(discreet):
                     pt1 = it.point(i / float(discreet)) * zoom_factor
                     pt2 = it.point((i + 1) / float(discreet)) * zoom_factor
-                    pygame.draw.aaline(self.display, (0, 0, 0), (pt1.real, pt1.imag), (pt2.real, pt2.imag))
+                    pygame.draw.aaline(self.display, (100, 100, 100),
+                                       (pt1.real, pt1.imag - 700),
+                                       (pt2.real, pt2.imag - 700))
 
 
 if __name__ == "__main__":
-    app = SVGDrawApp("svg/shape3.svg")
+    app = SVGDrawApp("svg/Che.svg")
     app.startLoop()
