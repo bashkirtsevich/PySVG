@@ -21,19 +21,19 @@ class SVGDrawApp(GameApp):
     def draw(self):
         self.display.fill((255, 255, 255))
 
-        zoom_factor = 2
+        zoom_factor = 4
         discreet = 10
 
         for path in self._paths:
             for it in path:
-                for i in xrange(discreet):
+                points = []
+                for i in xrange(discreet + 1):
                     pt1 = it.point(i / float(discreet)) * zoom_factor
-                    pt2 = it.point((i + 1) / float(discreet)) * zoom_factor
-                    pygame.draw.aaline(self.display, (100, 100, 100),
-                                       (pt1.real, pt1.imag - 700),
-                                       (pt2.real, pt2.imag - 700))
+                    points.append((pt1.real, pt1.imag - 200))
+
+                pygame.draw.aalines(self.display, (100, 100, 100), False, points)
 
 
 if __name__ == "__main__":
-    app = SVGDrawApp("svg/Che.svg")
+    app = SVGDrawApp("svg/shape2.svg")
     app.startLoop()
